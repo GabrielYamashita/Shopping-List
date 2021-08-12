@@ -1,0 +1,39 @@
+{% extends "base.html" %} {% block title %}Shopping List{% endblock %} {% block
+content %}
+<h1 align="center" style="margin: 1.5rem 0">Shopping List</h1>
+<ul class="list-group list-group-flush" id="notes">
+	{% for note in user.notes %}
+	<li class="list-group-item">
+		{{ note.data }}
+		<button type="button" class="close" onClick="deleteNote({{ note.id }})">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</li>
+	{% endfor %}
+</ul>
+
+<form method="POST">
+	<textarea
+		name="note"
+		id="note"
+		class="form-control"
+		placeholder="Add Item"
+	></textarea>
+
+	<div class="md-form">
+		<textarea
+			id="form103"
+			class="md-textarea form-control"
+			rows="5"
+		></textarea>
+		<label for="form103">Your message</label>
+	</div>
+
+	<br />
+	<div align="center">
+		<button type="submit" class="btn btn-dark" style="margin-bottom: 1.5rem">
+			Add Item
+		</button>
+	</div>
+</form>
+{% endblock %}
